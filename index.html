@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sembako Jaya - Belanja Kebutuhan Dapur dari Rumah</title>
+    <meta name="description" content="Toko sembako online dengan katalog 20 produk dapur lengkap dan pemesanan praktis via WhatsApp." />
+    <meta property="og:title" content="Sembako Jaya - Belanja Kebutuhan Dapur dari Rumah" />
+    <meta property="og:description" content="Katalog 20 sembako murah, higienis, dan cepat diantar. Pesan praktis via WhatsApp tanpa repot ke pasar." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon & Stylesheet Terpisah -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <!-- NAVBAR UTAMA -->
+    <header class="navbar">
+      <div class="container nav-wrapper">
+        <a href="#" class="brand-wrapper">
+          <div class="brand-icon">🛒</div>
+          <div>
+            <div class="logo">Sembako <span>Jaya</span></div>
+            <div class="brand-subtitle">Pesan dari Rumah • Cepat & Praktis</div>
+          </div>
+        </a>
+
+        <div class="nav-actions">
+          <button class="cart-btn" onclick="window.SembakoApp.toggleCart(true)" aria-label="Buka Keranjang Belanja">
+            <span>🛒</span>
+            <span>Keranjang</span>
+            <span class="cart-badge cart-count-badge" id="navCartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-tag">✨ Belanja Sembako Tanpa Antri</div>
+        <h1>Belanja Kebutuhan Dapur dari Rumah</h1>
+        <p>Pilih kebutuhan pokok dapur Anda dari 20 pilihan produk terlengkap, pesan langsung via WhatsApp, dan pesanan siap diantar sampai pintu rumah Anda(Jakarta).</p>
+        
+        <div class="hero-stats">
+          <div class="stat-item"><span>📦</span> 20 Produk Sembako Lengkap</div>
+          <div class="stat-item"><span>⚡</span> Respon Cepat WhatsApp</div>
+          <div class="stat-item"><span>🛵</span> Siap Antar ke Rumah</div>
+          <div class="stat-item"><span>💵</span> Bayar saat Barang Sampai (COD)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION KATALOG PRODUK -->
+    <section class="catalog-section container">
+      <!-- Header Katalog & Input Pencarian -->
+      <div class="catalog-header">
+        <div class="catalog-title-group">
+          <h2>Daftar Katalog Sembako</h2>
+          <p>Kualitas bahan pangan pilihan untuk keluarga Anda</p>
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Cari beras, minyak, kecap..." 
+            aria-label="Cari produk sembako"
+            autocomplete="off"
+          />
+          <button 
+            type="button" 
+            class="clear-search-btn" 
+            id="clearSearchBtn" 
+            onclick="window.SembakoApp.clearSearch()" 
+            title="Hapus pencarian"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Kategori Tabs -->
+      <div class="category-filter-wrapper">
+        <div class="category-tabs" id="categoryTabs">
+          <!-- Kategori dirender oleh js/app.js -->
+        </div>
+      </div>
+
+      <!-- Bar Ringkasan Jumlah Produk -->
+      <div class="product-count-bar" id="productCountBar">
+        <!-- Dirender oleh js/app.js -->
+      </div>
+
+      <!-- Grid 20 Produk Sembako -->
+      <main class="product-grid" id="productGrid">
+        <!-- 20 Kartu produk dimuat dinamis oleh js/app.js -->
+      </main>
+    </section>
+
+    <!-- FOOTER INFORMASI -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Sembako Jaya</h4>
+            <p>Sahabat belanja kebutuhan harian dapur keluarga Anda. Menyediakan 20 macam sembako pokok mulai dari beras premium, gula murni, minyak goreng pilihan, bumbu masak, hingga produk kebersihan rumah.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Jam Operasional</h4>
+            <ul class="footer-contact-list">
+              <li>Senin - Sabtu: 03.00 - 00.00 WIB</li>
+              <li>Minggu: 04.00 - 21.00 WIB</li>
+              <li>Pengiriman setiap hari</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Layanan Pelanggan</h4>
+            <ul class="footer-contact-list">
+              <li>WhatsApp: +62 896-0104-1658</li>
+              <li>Area Antar: Radius hingga 10 km</li>
+              <li>Metode: Transfer & COD</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Sembako Jaya. Pesan mudah tanpa perlu repot keluar rumah.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- KERANJANG BELANJA (DRAWER) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="window.SembakoApp.toggleCart(false)"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang Belanja">
+      <div class="cart-header">
+        <div>
+          <div class="cart-header-title">
+            <span>🛒</span>
+            <span>Keranjang Belanja</span>
+          </div>
+          <span class="cart-header-count">Periksa item pesanan Anda</span>
+        </div>
+        <button class="close-btn" onclick="window.SembakoApp.toggleCart(false)" aria-label="Tutup keranjang">✕</button>
+      </div>
+
+      <!-- Daftar Item Belanja -->
+      <div class="cart-body" id="cartItems">
+        <!-- Item belanja dimuat oleh js/app.js -->
+      </div>
+
+      <!-- Ringkasan & Form Pemesanan WhatsApp -->
+      <div class="cart-footer">
+        <div class="total-display">
+          <span>Total Belanja:</span>
+          <span class="total-amount" id="totalPrice">Rp 0</span>
+        </div>
+
+        <form id="orderForm" class="order-form">
+          <div class="form-group-title">Data Pengiriman:</div>
+          <input 
+            type="text" 
+            id="custName" 
+            class="form-input" 
+            placeholder="Nama Penerima (Wajib)" 
+            required 
+          />
+          <input 
+            type="tel" 
+            id="custPhone" 
+            class="form-input" 
+            placeholder="Nomor WhatsApp / HP Aktif" 
+          />
+          <textarea 
+            id="custAddress" 
+            class="form-input" 
+            rows="2" 
+            placeholder="Alamat Pengiriman Lengkap (Jl, No Rumah, RT/RW, Patokan)" 
+            required
+          ></textarea>
+          <input 
+            type="text" 
+            id="custNotes" 
+            class="form-input" 
+            placeholder="Catatan Tambahan (cth: Antar sebelum jam 12)" 
+          />
+
+          <button type="submit" class="btn-checkout">
+            <span>💬</span> Pesan Sekarang via WhatsApp
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 8px;">
+          <button type="button" class="btn-clear-cart" onclick="window.SembakoApp.clearCart()">
+            Kosongkan Keranjang
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- TOMBOL FLOATING KERANJANG (MOBILE) -->
+    <button class="floating-cart-btn" id="floatingCartBtn" onclick="window.SembakoApp.toggleCart(true)">
+      <span>🛒</span>
+      <span class="cart-badge cart-count-badge">0</span>
+      <span id="floatingCartAmount" style="margin-left: 4px; font-size: 0.88rem;">Rp 0</span>
+    </button>
+
+    <!-- TOAST NOTIFIKASI -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+    <!-- MODAL KONFIRMASI PEMESANAN WHATSAPP -->
+    <div class="modal-overlay" id="waModal" onclick="if(event.target === this) window.SembakoApp.closeWhatsAppModal()">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3><span>📱</span> Konfirmasi Pesanan WhatsApp</h3>
+          <button class="close-btn" onclick="window.SembakoApp.closeWhatsAppModal()">✕</button>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-sub); margin-bottom:0.75rem;">
+          Format pesan pesanan telah berhasil disusun. Klik tombol hijau untuk langsung membuka chat WhatsApp toko:
+        </p>
+        
+        <pre class="modal-text-preview" id="waPreviewText"></pre>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-copy-order" onclick="window.SembakoApp.copyOrderText()">
+            📋 Salin Teks
+          </button>
+          <a id="waDirectBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-open-wa">
+            <span>💬</span> Buka WhatsApp Toko
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODUL JAVASCRIPT TERPISAH -->
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
